@@ -23,6 +23,22 @@ npm run dev
 - SOAP endpoint: `http://localhost:3001/shipment`
 - WSDL: `http://localhost:3001/shipment?wsdl`
 
+## Rodando com Docker Compose
+
+```bash
+docker compose up --build
+```
+
+- Frontend: `http://localhost:3000`
+- SOAP endpoint: `http://localhost:3001/shipment`
+- WSDL: `http://localhost:3001/shipment?wsdl`
+
+Para parar:
+
+```bash
+docker compose down
+```
+
 ## Build e testes
 
 ```bash

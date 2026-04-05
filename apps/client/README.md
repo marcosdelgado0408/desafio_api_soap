@@ -16,6 +16,7 @@ VITE_SOAP_ENDPOINT=/shipment
 ```
 
 Por padrão, o Vite faz proxy de `/shipment` para `http://localhost:3001`.
+No Docker Compose, o proxy aponta para `http://server:3001`.
 
 ## Rodando localmente
 
@@ -25,6 +26,12 @@ npm run dev -w apps/client
 ```
 
 App: `http://localhost:3000`
+
+## Rodando com Docker Compose (na raiz do monorepo)
+
+```bash
+docker compose up --build
+```
 
 ## Testes
 

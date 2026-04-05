@@ -17,6 +17,12 @@ npm run dev -w apps/server
 Servidor: `http://localhost:3001/shipment`  
 WSDL: `http://localhost:3001/shipment?wsdl`
 
+## Rodando com Docker Compose (na raiz do monorepo)
+
+```bash
+docker compose up --build
+```
+
 ## Testes
 
 ```bash
