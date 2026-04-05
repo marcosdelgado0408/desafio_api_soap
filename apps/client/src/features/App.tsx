@@ -88,31 +88,72 @@ export function App() {
   };
 
   return (
-    <main style={{ margin: "0 auto", maxWidth: 1000, fontFamily: "sans-serif", padding: 16 }}>
-      <h1>LogiTrack SOAP Client</h1>
-      <p>Endpoint: {endpoint}</p>
-      {mensagem && <p><strong>{mensagem}</strong></p>}
+    <main className="layout">
+      <header className="hero">
+        <p className="hero__eyebrow">LogiTrack</p>
+        <h1>SOAP Client Console</h1>
+        <p className="hero__sub">Endpoint ativo: {endpoint}</p>
+        {mensagem && <p className="hero__message">{mensagem}</p>}
+      </header>
 
-      <section>
+      <section className="card">
         <h2>Criar Remessa</h2>
-        <form onSubmit={handleCriar}>
-          <input placeholder="Cliente ID" value={createForm.clienteId} onChange={(e) => setCreateForm((p) => ({ ...p, clienteId: e.target.value }))} required />
-          <input placeholder="Origem" value={createForm.origem} onChange={(e) => setCreateForm((p) => ({ ...p, origem: e.target.value }))} required />
-          <input placeholder="Destino" value={createForm.destino} onChange={(e) => setCreateForm((p) => ({ ...p, destino: e.target.value }))} required />
-          <input type="number" step="0.1" min="0.1" placeholder="Peso (kg)" value={createForm.pesoKg} onChange={(e) => setCreateForm((p) => ({ ...p, pesoKg: Number(e.target.value) }))} required />
-          <input placeholder="Descrição" value={createForm.descricao} onChange={(e) => setCreateForm((p) => ({ ...p, descricao: e.target.value }))} required />
-          <button type="submit">Criar</button>
+        <form className="grid-form" onSubmit={handleCriar}>
+          <input
+            placeholder="Cliente ID"
+            value={createForm.clienteId}
+            onChange={(e) => setCreateForm((p) => ({ ...p, clienteId: e.target.value }))}
+            required
+          />
+          <input
+            placeholder="Origem"
+            value={createForm.origem}
+            onChange={(e) => setCreateForm((p) => ({ ...p, origem: e.target.value }))}
+            required
+          />
+          <input
+            placeholder="Destino"
+            value={createForm.destino}
+            onChange={(e) => setCreateForm((p) => ({ ...p, destino: e.target.value }))}
+            required
+          />
+          <input
+            type="number"
+            step="0.1"
+            min="0.1"
+            placeholder="Peso (kg)"
+            value={createForm.pesoKg}
+            onChange={(e) => setCreateForm((p) => ({ ...p, pesoKg: Number(e.target.value) }))}
+            required
+          />
+          <input
+            className="grid-form__span"
+            placeholder="Descrição"
+            value={createForm.descricao}
+            onChange={(e) => setCreateForm((p) => ({ ...p, descricao: e.target.value }))}
+            required
+          />
+          <button className="button button--primary" type="submit">
+            Criar
+          </button>
         </form>
       </section>
 
-      <section>
+      <section className="card">
         <h2>Consultar Remessa</h2>
-        <form onSubmit={handleConsultar}>
-          <input placeholder="Remessa ID" value={consultaId} onChange={(e) => setConsultaId(e.target.value)} required />
-          <button type="submit">Consultar</button>
+        <form className="line-form" onSubmit={handleConsultar}>
+          <input
+            placeholder="Remessa ID"
+            value={consultaId}
+            onChange={(e) => setConsultaId(e.target.value)}
+            required
+          />
+          <button className="button" type="submit">
+            Consultar
+          </button>
         </form>
         {shipmentDetalhe && (
-          <article>
+          <article className="shipment-detail">
             <p><strong>ID:</strong> {shipmentDetalhe.remessaId}</p>
             <p><strong>Cliente:</strong> {shipmentDetalhe.clienteId}</p>
             <p><strong>Origem:</strong> {shipmentDetalhe.origem}</p>
@@ -120,12 +161,21 @@ export function App() {
             <p><strong>Peso:</strong> {shipmentDetalhe.pesoKg}</p>
             <p><strong>Descrição:</strong> {shipmentDetalhe.descricao}</p>
             <p><strong>Status:</strong> {shipmentDetalhe.status}</p>
-            <label>
-              Atualizar status
-              <select onChange={(e) => atualizarStatus(shipmentDetalhe.remessaId, e.target.value as ShipmentStatus)} defaultValue="">
-                <option value="" disabled>Selecione</option>
+            <label className="line-form">
+              <span>Atualizar status</span>
+              <select
+                onChange={(e) =>
+                  atualizarStatus(shipmentDetalhe.remessaId, e.target.value as ShipmentStatus)
+                }
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Selecione
+                </option>
                 {SHIPMENT_STATUSES.map((status) => (
-                  <option key={status} value={status}>{status}</option>
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
                 ))}
               </select>
             </label>
@@ -133,13 +183,18 @@ export function App() {
         )}
       </section>
 
-      <section>
+      <section className="card">
         <h2>Listar Remessas</h2>
-        <div>
-          <select value={filtroStatus} onChange={(e) => setFiltroStatus(e.target.value as ShipmentStatus | "")}>
+        <div className="toolbar">
+          <select
+            value={filtroStatus}
+            onChange={(e) => setFiltroStatus(e.target.value as ShipmentStatus | "")}
+          >
             <option value="">Todos os status</option>
             {SHIPMENT_STATUSES.map((status) => (
-              <option key={status} value={status}>{status}</option>
+              <option key={status} value={status}>
+                {status}
+              </option>
             ))}
           </select>
           <input
@@ -147,20 +202,37 @@ export function App() {
             value={filtroClienteId}
             onChange={(e) => setFiltroClienteId(e.target.value)}
           />
-          <button onClick={loadLista}>Buscar</button>
-          <button onClick={() => setPagina((p) => Math.max(1, p - 1))}>Página anterior</button>
-          <button onClick={() => setPagina((p) => p + 1)}>Próxima página</button>
-          <span> Página atual: {pagina} </span>
+          <button className="button" onClick={loadLista}>
+            Buscar
+          </button>
+          <button className="button" onClick={() => setPagina((p) => Math.max(1, p - 1))}>
+            Pagina anterior
+          </button>
+          <button className="button" onClick={() => setPagina((p) => p + 1)}>
+            Proxima pagina
+          </button>
+          <span className="pagination">Pagina atual: {pagina}</span>
         </div>
-        <p>Total: {lista.total}</p>
-        <ul>
+        <p className="total">Total: {lista.total}</p>
+        <ul className="shipment-list">
           {lista.remessas.map((item) => (
             <li key={item.remessaId}>
-              {item.remessaId} - {item.status} - {item.clienteId}
-              <select onChange={(e) => atualizarStatus(item.remessaId, e.target.value as ShipmentStatus)} defaultValue="">
-                <option value="" disabled>Atualizar status</option>
+              <div>
+                <strong>{item.remessaId}</strong>
+                <span>{item.status}</span>
+                <span>{item.clienteId}</span>
+              </div>
+              <select
+                onChange={(e) => atualizarStatus(item.remessaId, e.target.value as ShipmentStatus)}
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Atualizar status
+                </option>
                 {SHIPMENT_STATUSES.map((status) => (
-                  <option key={status} value={status}>{status}</option>
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
                 ))}
               </select>
             </li>

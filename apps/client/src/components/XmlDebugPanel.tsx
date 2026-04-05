@@ -6,7 +6,7 @@ type Props = {
 
 export function XmlDebugPanel({ debug }: Props) {
   return (
-    <section>
+    <section className="card xml-panel">
       <h2>Debug XML</h2>
       {debug ? (
         <div>
