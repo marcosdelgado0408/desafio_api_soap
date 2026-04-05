@@ -1,0 +1,21 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    container_name: logitrack-soap-server
+    ports:
+      - "3001:3001"
+
+  client:
+    build:
+      context: .
+      dockerfile: apps/client/Dockerfile
+    container_name: logitrack-soap-client
+    environment:
+      VITE_PROXY_TARGET: http://server:3001
+      VITE_SOAP_ENDPOINT: /shipment
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server

@@ -1,0 +1,291 @@
+:root {
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at top right, #f8fafc 0%, #f3f4f6 40%, #e5e7eb 100%);
+  line-height: 1.5;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.layout {
+  margin: 0 auto;
+  max-width: 1120px;
+  width: 100%;
+  padding: 32px 20px 56px;
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.hero {
+  background: linear-gradient(125deg, #111827 0%, #1d4ed8 60%, #2563eb 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: #eff6ff;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.28);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.hero__eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  opacity: 0.82;
+}
+
+.hero__sub {
+  margin: 10px 0 0;
+  font-size: 0.98rem;
+  color: #dbeafe;
+}
+
+.hero__message {
+  margin: 14px 0 0;
+  border: 1px solid rgba(219, 234, 254, 0.4);
+  background: rgba(15, 23, 42, 0.24);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  min-width: 0;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1.55rem;
+}
+
+input,
+select,
+button {
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+}
+
+input,
+select {
+  height: 40px;
+  padding: 0 12px;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+.button {
+  height: 40px;
+  padding: 0 14px;
+  cursor: pointer;
+  border-color: #94a3b8;
+  background: #f8fafc;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.button:hover {
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #f8fafc;
+}
+
+.button--primary:hover {
+  background: #1e293b;
+}
+
+.grid-form {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-form input:nth-child(1),
+.grid-form input:nth-child(2),
+.grid-form input:nth-child(3),
+.grid-form input:nth-child(4) {
+  grid-column: span 3;
+}
+
+.grid-form__span {
+  grid-column: span 4;
+}
+
+.grid-form button {
+  grid-column: span 2;
+}
+
+.line-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.line-form input {
+  min-width: 240px;
+}
+
+.shipment-detail {
+  margin-top: 14px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+}
+
+.shipment-detail p {
+  margin: 6px 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.toolbar > * {
+  min-width: 0;
+}
+
+.pagination {
+  font-weight: 600;
+  color: #334155;
+}
+
+.total {
+  margin: 12px 0 8px;
+  font-weight: 600;
+}
+
+.shipment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.shipment-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.shipment-list li div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shipment-list strong {
+  color: #0f172a;
+}
+
+.shipment-list span {
+  background: #e2e8f0;
+  color: #334155;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.xml-panel pre {
+  margin: 8px 0 0;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    padding: 20px 12px 40px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .grid-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-form input:nth-child(1),
+  .grid-form input:nth-child(2),
+  .grid-form input:nth-child(3),
+  .grid-form input:nth-child(4),
+  .grid-form__span,
+  .grid-form button {
+    grid-column: span 2;
+  }
+
+  .shipment-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .toolbar button,
+  .toolbar select,
+  .toolbar input {
+    width: 100%;
+  }
+
+  .pagination {
+    text-align: left;
+  }
+}
